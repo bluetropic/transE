@@ -1,4 +1,4 @@
-# DataSet£ºFB15k
+# DataSet: FB15k
 
 We provide FB15k as test data.
 
