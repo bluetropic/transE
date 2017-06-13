@@ -24,9 +24,9 @@ def pca(inputM, k):
 def plotV(a, labels):
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    print("aaa")
-    font = { 'fontname':'Tahoma', 'fontsize':0.5, 'verticalalignment': 'top', 'horizontalalignment':'center' }
-    ax.scatter(a[:,0], a[:,1], marker = ' ')
+    print("Begin to draw ...")
+    font = { 'fontname':'Tahoma', 'fontsize':1, 'verticalalignment': 'top', 'horizontalalignment':'center' }
+    ax.scatter(a[:,0].flatten().A[0], a[:,1].flatten().A[0], marker = ' ')
     ax.set_xlim(-0.8,0.8)
     ax.set_ylim(-0.8,0.8)
     i = 0
@@ -42,14 +42,14 @@ def plotV(a, labels):
         ax.annotate(label, xy = (x, y), xytext = None, ha = 'right', va = 'bottom', **font)
 
 
-    plt.title('TransE pca2dim')
+    plt.title('TransE PCA2Dim')
     plt.xlabel('X')
     plt.ylabel('Y')
-    print("ddd")
-    plt.savefig('plot_with_labels', dpi = 3000, bbox_inches = 'tight' ,orientation = 'landscape', papertype = 'a0')
+    print("Finished.")
+    plt.savefig('plot_with_labels', dpi = 1200, bbox_inches = 'tight' ,orientation = 'landscape', papertype = 'a0')
 if __name__ == '__main__':
-    dirEntity = "c:\\entityVector.txt"
-    dirRelation = "c:\\relationVector.txt"
+    dirEntity = "./data/entityVector.txt"
+    dirRelation = "./data/relationVector.txt"
     matEntity, nameEntity = loadData(dirEntity)
     matRelation, nameRelation = loadData(dirRelation)
     mat = row_stack((matEntity, matRelation))
@@ -57,4 +57,6 @@ if __name__ == '__main__':
     nameEntity.extend(nameRelation)
     k = 2
     a, b = pca(mat, k)
+    a = a.astype(double)
+    b = b.astype(double)
     plotV(a, nameEntity)
