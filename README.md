@@ -1,5 +1,8 @@
 transE by Python
 ======
+forked from [wuxiyu/transE](https://github.com/wuxiyu/transE)
+Thanks.
+
 Train transE.py and test test.py.  
   
 If shut down during training, also can run reTrans.py to continue.   
